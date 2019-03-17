@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 连接数据的JDBC驱动包所在位置，指定到本机的完整路径 -->
+    <classPathEntry location="D:\apache-maven-3.5.2\repository\mysql\mysql-connector-java\5.1.22\mysql-connector-java-5.1.22.jar" />
+
+    <!-- 配置table表信息内容体，targetRuntime指定采用MyBatis的版本 -->
+    <context id="table" targetRuntime="MyBatis3">
+
+        <!-- 抑制生成注释，由于生成的注释都是英文的，可以不让它自动生成 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://10.8.0.21:3306/test?useUnicode=true\amp;characterEncoding=utf8\amp;useSSL=false"
+                        userId="hdp"
+                        password="hadoop">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="win.bojack.springboot.model" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="win.bojack.springboot.mapper" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="win.bojack.springboot.mapper" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <table tableName="person"
+               domainObjectName="Person"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false" />
+    </context>
+</generatorConfiguration>
